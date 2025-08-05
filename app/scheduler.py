@@ -3,6 +3,7 @@ from app.data_fetcher.crypto import fetch_crypto_data
 from app.analyzer.sentiment import analyze_market
 from app.reporter.formatter import format_report
 from app.reporter.emailer import send_email
+from app.reporter.archiver import save_report
 
 def daily_job():
     print("🚀 Starting daily job...")
@@ -18,6 +19,8 @@ def daily_job():
 
     print("📝 Formatting report...")
     report = format_report(analysis_results)
+
+    save_report(report)
 
     print("📤 Sending email...")
     send_email(report)

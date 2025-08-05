@@ -1,17 +1,17 @@
-# Base image
+# 1. Base image
 FROM python:3.10-slim
 
-# Working directory
+# 2. Çalışma dizini
 WORKDIR /app
 
-# Copy files
+# 3. Tüm dosyaları kopyala
 COPY . .
 
-# Install dependencies
+# 4. Gereken paketleri yükle
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Environment variables
+# 5. Ortam değişkeni
 ENV PYTHONUNBUFFERED=1
 
-# Run script (örnek olarak scheduler çalıştırılıyor)
-CMD ["python", "app/main.py"]
+# 6. FastAPI sunucusunu başlat
+CMD ["uvicorn", "app.web.server:app", "--host", "0.0.0.0", "--port", "8000"]

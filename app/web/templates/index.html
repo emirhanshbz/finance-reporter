@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>📊 Rapor Arşivi</title>
+</head>
+<body>
+    <h1>📁 Kaydedilmiş Finans Raporları</h1>
+    <ul>
+        {% for file in files %}
+            <li><a href="/reports/{{ file }}" target="_blank">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

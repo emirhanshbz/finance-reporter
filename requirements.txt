@@ -6,3 +6,6 @@ torch
 yagmail
 apscheduler
 python-dotenv
+fastapi[all]
+uvicorn
+jinja2

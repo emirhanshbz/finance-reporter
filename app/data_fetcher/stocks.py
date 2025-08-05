@@ -5,8 +5,6 @@ def fetch_nasdaq_data():
     # Örnek NASDAQ hisseleri
     tickers = ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN"]
 
-    print("📈 Fetching NASDAQ data...")
-
     data = {}
     for ticker in tickers:
         stock = yf.Ticker(ticker)

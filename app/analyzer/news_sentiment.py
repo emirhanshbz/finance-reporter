@@ -4,9 +4,6 @@ from transformers import pipeline
 classifier = pipeline("sentiment-analysis", model="ProsusAI/finbert")
 
 def analyze_headlines(headlines):
-
-    print("🧠 Analyzing news data...")
-
     if not headlines:
         return []
     

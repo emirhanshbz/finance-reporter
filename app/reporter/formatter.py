@@ -1,16 +1,18 @@
-def format_report(analysis, news_sentiment):
-    
-    print("📝 Formatting report...")
-    
-    html = """
+def format_report(analysis, news_sentiment, summary_text):
+    html = f"""
     <html>
     <body style="font-family: Arial, sans-serif; color: #333;">
         <h2>📊 Daily Financial Market Report</h2>
+
+        <h3>🧠 Summary</h3>
+        <p style="background-color:#f5f5f5; padding:10px; border-left:5px solid #007BFF;">
+            {summary_text}
+        </p>
     """
 
     # Stocks tablosu
     html += """
-        <h3>NASDAQ Stocks</h3>
+        <h3>📈 NASDAQ Stocks</h3>
         <table border="1" cellspacing="0" cellpadding="5">
             <tr>
                 <th>Ticker</th>
@@ -38,7 +40,7 @@ def format_report(analysis, news_sentiment):
 
     # Crypto tablosu
     html += """
-        <h3>Crypto Markets</h3>
+        <h3>💰 Crypto Markets</h3>
         <table border="1" cellspacing="0" cellpadding="5">
             <tr>
                 <th>Coin</th>
@@ -83,7 +85,7 @@ def format_report(analysis, news_sentiment):
     html += """
         </table>
         <br>
-        <p>🕒 This report was generated automatically.</p>
+        <p style="font-size: 12px; color: #999;">🕒 This report was generated automatically.</p>
     </body>
     </html>
     """

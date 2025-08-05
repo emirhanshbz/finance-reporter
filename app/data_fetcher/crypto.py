@@ -5,8 +5,6 @@ def fetch_crypto_data():
     coins = ["bitcoin", "ethereum", "solana"]
     vs_currency = "usd"
 
-    print("💰 Fetching crypto data...")
-
     url = "https://api.coingecko.com/api/v3/simple/price"
     params = {
         "ids": ",".join(coins),

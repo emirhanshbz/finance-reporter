@@ -1,4 +1,7 @@
 def analyze_market(nasdaq_data, crypto_data):
+    
+    print("🧠 Analyzing data...")
+    
     def label_change(change_pct):
         if change_pct > 1:
             return "📈 Positive"

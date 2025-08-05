@@ -1,0 +1,8 @@
+yfinance
+requests
+pandas
+transformers
+torch
+yagmail
+apscheduler
+python-dotenv

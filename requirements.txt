@@ -9,3 +9,4 @@ python-dotenv
 fastapi[all]
 uvicorn
 jinja2
+prophet

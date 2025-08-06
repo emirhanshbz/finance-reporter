@@ -4,6 +4,7 @@ from app.data_fetcher.news import fetch_finance_headlines
 from app.analyzer.sentiment import analyze_market
 from app.analyzer.news_sentiment import analyze_headlines
 from app.analyzer.summarizer import generate_summary
+from app.analyzer.forecast import forecast_bitcoin, generate_forecast_comment
 from app.reporter.formatter import format_report
 from app.reporter.emailer import send_email
 from app.reporter.archiver import save_report
@@ -62,9 +63,16 @@ def daily_job():
     print("📝 Generating summary...")
     summary = generate_summary(raw_text)
 
+    print("🔮 Forecasting BTC prices...")
+    btc_forecast = forecast_bitcoin()
+
+    btc_forecast = forecast_bitcoin()
+    forecast_comment = generate_forecast_comment(btc_forecast)
+
+
     # 4. Raporu oluştur
     print("📄 Formatting report...")
-    report = format_report(analysis_results, news_sentiment, summary)
+    report = format_report(analysis_results, news_sentiment, summary, btc_forecast, forecast_comment)
 
     # 5. Raporu kaydet ve gönder
     print("💾 Saving report...")

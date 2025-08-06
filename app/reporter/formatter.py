@@ -1,4 +1,4 @@
-def format_report(analysis, news_sentiment, summary_text):
+def format_report(analysis, news_sentiment, summary_text, btc_forecast, forecast_comment):
     html = f"""
     <html>
     <body style="font-family: Arial, sans-serif; color: #333;">
@@ -10,7 +10,7 @@ def format_report(analysis, news_sentiment, summary_text):
         </p>
     """
 
-    # Stocks tablosu
+    # NASDAQ Stocks
     html += """
         <h3>📈 NASDAQ Stocks</h3>
         <table border="1" cellspacing="0" cellpadding="5">
@@ -38,7 +38,7 @@ def format_report(analysis, news_sentiment, summary_text):
 
     html += "</table>"
 
-    # Crypto tablosu
+    # Crypto Markets
     html += """
         <h3>💰 Crypto Markets</h3>
         <table border="1" cellspacing="0" cellpadding="5">
@@ -62,7 +62,7 @@ def format_report(analysis, news_sentiment, summary_text):
 
     html += "</table>"
 
-    # News Sentiment tablosu
+    # Market News Sentiment
     html += """
         <h3>📰 Market News Sentiment</h3>
         <table border="1" cellspacing="0" cellpadding="5">
@@ -79,6 +79,34 @@ def format_report(analysis, news_sentiment, summary_text):
                 <td>{item['sentiment']}</td>
                 <td>{item['score']}</td>
                 <td>{item['headline']}</td>
+            </tr>
+        """
+
+    html += "</table>"
+
+    # Bitcoin Forecast + Comment
+    html += f"""
+        <h3>🔮 Bitcoin 7-Day Forecast</h3>
+        <p style="background-color:#f0f8ff; padding:10px; border-left:5px solid #17a2b8;">
+            {forecast_comment}
+        </p>
+
+        <table border="1" cellspacing="0" cellpadding="5">
+            <tr>
+                <th>Date</th>
+                <th>Estimated Price</th>
+                <th>Lower Bound</th>
+                <th>Upper Bound</th>
+            </tr>
+    """
+
+    for item in btc_forecast:
+        html += f"""
+            <tr>
+                <td>{item['ds'].strftime('%Y-%m-%d')}</td>
+                <td>${item['yhat']}</td>
+                <td>${item['yhat_lower']}</td>
+                <td>${item['yhat_upper']}</td>
             </tr>
         """
 

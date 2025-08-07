@@ -1,16 +1,19 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
+from app.web.api import router as api_router
 import os
 
 app = FastAPI()
 templates = Jinja2Templates(directory="app/web/templates")
 
+app.include_router(api_router)
+
 REPORTS_DIR = "reports"
 
 @app.get("/")
 def home():
-    return {"message": "Rapor görüntüleyiciye hoş geldiniz. /reports sayfasına gidin"}
+    return {"message": "Finance-Reporter <=> /reports <=> /ask"}
 
 
 @app.get("/reports")
@@ -28,3 +31,7 @@ def get_report(filename: str):
     if os.path.exists(file_path):
         return FileResponse(file_path, media_type="text/html")
     return {"error": "Dosya bulunamadı"}
+
+@app.get("/ask-page")
+def ask_page(request: Request):
+    return templates.TemplateResponse("ask.html", {"request": request})

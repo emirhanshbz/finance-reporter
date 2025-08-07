@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>💬 Soru Sor (Finance Bot)</title>
+  <style>
+    body { font-family: sans-serif; margin: 50px; background: #f9f9f9; }
+    h1 { color: #333; }
+    #answer { margin-top: 20px; font-weight: bold; }
+    input, button { padding: 10px; font-size: 16px; }
+    button { margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>💬 Finans Asistanına Soru Sor</h1>
+  <input type="text" id="questionInput" placeholder="What is inflation?" size="50" />
+  <button onclick="askQuestion()">Sor</button>
+
+  <div id="answer"></div>
+
+  <script>
+    async function askQuestion() {
+      const question = document.getElementById('questionInput').value;
+      const answerDiv = document.getElementById('answer');
+      answerDiv.innerHTML = "⏳ Cevap bekleniyor...";
+
+      try {
+        const response = await fetch(`/ask?question=${encodeURIComponent(question)}`);
+        const data = await response.json();
+        if (data.answer) {
+          answerDiv.innerHTML = "📌 Cevap: " + data.answer;
+        } else {
+          answerDiv.innerHTML = "⚠️ Cevap alınamadı.";
+        }
+      } catch (error) {
+        answerDiv.innerHTML = "❌ Hata oluştu: " + error;
+      }
+    }
+  </script>
+</body>
+</html>

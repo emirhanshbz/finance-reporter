@@ -76,7 +76,14 @@ def daily_job():
 
     # 5. Raporu kaydet ve gönder
     print("💾 Saving report...")
-    save_report(report)
+    save_report(
+    html_content=report,
+    analysis=analysis_results,
+    news_sentiment=news_sentiment,
+    summary=summary,
+    btc_forecast=btc_forecast,
+    forecast_comment=forecast_comment
+    )
     send_email(report)
 
     print("✅ Daily job completed.")

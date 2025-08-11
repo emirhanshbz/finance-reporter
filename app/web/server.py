@@ -13,7 +13,7 @@ REPORTS_DIR = "reports"
 
 @app.get("/")
 def home():
-    return {"message": "Finance-Reporter <=> /reports <=> /ask"}
+    return {"message": "Finance-Reporter <=> /reports <=> /ask-age"}
 
 
 @app.get("/reports")
